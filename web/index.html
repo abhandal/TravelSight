@@ -30,11 +30,12 @@
         <script>
             $(document).ready(function(){
                 var airport = [];
-                $.getJSON("js/airports.json", function(data) {
+                $.getJSON("js/flight_data.json", function(data) {
                     for(var i = 0; i<data.length;i++)
                         {
-                            airport[i] = data[i].name + " - " + data[i].iata;
+                            airport[i] = data[i].airport_name + " - " + data[i].airport;
                         }
+                    $.unique(airport);
                     $('#form-arrival').autocomplete({
                         source:airport
                     });
