@@ -54,19 +54,24 @@
             }
             
           google.charts.setOnLoadCallback(drawChart);
-          function drawChart() {
+          function drawChart(delay) {
 
             var data = google.visualization.arrayToDataTable([
               ['Effort', 'Amount given'],
-              ['Chance of Delay',     100],
+              ['Chance of Delay',     delay],
+                ['Arrival', 100-delay]
             ]);
 
             var options = {
               pieHole: 0.5,
               pieSliceTextStyle: {
-                color: 'black',
+                color: 'white',
               },
-              legend: 'none'
+              legend: 'none',
+                slices: {
+                    0: {color:'red'},
+                    1: {color:'blue'}
+                }
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('donut'));

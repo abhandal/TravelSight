@@ -33,7 +33,8 @@ $(document).ready(function() {
 	var toValue = $('#form-destination').val();
 
 	var symbol = fromValue.substring((fromValue.length-3), fromValue.length);
-	averageDelayAirport(flight_data_lax,symbol);
+	var chartPercent = averageDelayAirport(flight_data_lax,symbol);
+    drawChart(chartPercent);
 
 	});
 
@@ -72,7 +73,7 @@ function delay(airportDelay){
 	var arr_diverted = (airportDelay.arr_diverted/divisor)*100;
 
 	var total_delay = arr_del15 + carrier_ct + weather_ct + nas_ct + security_ct + late_aircraft_ct + arr_cancelled + arr_diverted;
-
+    
 	return total_delay;
 }
 
