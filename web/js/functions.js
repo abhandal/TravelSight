@@ -22,6 +22,7 @@ $(document).ready(function() {
 	var totalAirport = 0;
 
 	var test  = averageDelayAirport(flight_data_lax,'LAS');
+    drawChart(test);
 	console.log("TEST VALUE: " + test);
 
 	function averageDelayAirport(airport,name){  
@@ -59,7 +60,7 @@ function delay(airportDelay){
 	var arr_diverted = (airportDelay.arr_diverted/divisor)*100;
 
 	var total_delay = arr_del15 + carrier_ct + weather_ct + nas_ct + security_ct + late_aircraft_ct + arr_cancelled + arr_diverted;
-
+    
 	return total_delay;
 }
 
