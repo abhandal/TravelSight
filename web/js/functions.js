@@ -12,24 +12,25 @@ $(document).ready(function() {
 		console.log(response);
 		flight_data_lax = response;
 	
-	var averageDelayForAirport;
+	var totalAirport = 0 ;
 
-	for (key in flight_data_lax) {
+	var test  = averageDelayAirport(flight_data_lax);
+	console.log(test);
 
-	// console.log(flight_data_lax.lenght);
-
-	delay(flight_data_lax[key]);	
-	  //console.log(flight_data_lasvegas[key].carrier_name);
+	function averageDelayAirport(airport){  
+	var averageDelayForAirport ;
+		for (key in airport) {
+		totalAirport += delay(airport[key]);
+		}
+	return totalAirport/airport.length;
 	}
-	
+
 	});
 
 });
 
 function delay(airportDelay){
 	
-	// console.log(airportDelay);
-
 	var divisor = airportDelay.arr_flights;
 	var arr_del15 = (airportDelay.arr_del15/divisor)*100;
 	var carrier_ct = (airportDelay.carrier_ct/divisor)*100;
@@ -41,7 +42,7 @@ function delay(airportDelay){
 	var arr_diverted = (airportDelay.arr_diverted/divisor)*100;
 
 	var total_delay = arr_del15 + carrier_ct + weather_ct + nas_ct + security_ct + late_aircraft_ct + arr_cancelled + arr_diverted;
-
-	console.log(total_delay);
+	
+	return total_delay;
 }
 
