@@ -35,7 +35,7 @@ $(document).ready(function() {
 	var symbol = fromValue.substring((fromValue.length-3), fromValue.length);
 	var chartPercent = averageDelayAirport(flight_data_lax,symbol);
     drawChart(chartPercent);
-    
+
 	});
 
 	function averageDelayAirport(airport,name){

@@ -49,10 +49,13 @@
                 ['Cancelled', 0.01],
                 ['Diverted', 0.01]
               ]);
+                var options = {
+                    backgroundColor: {fill:'transparent'}
+                }
                 
               // Instantiate and draw the chart.
               var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-              chart.draw(data, null);
+              chart.draw(data, options);
             }
             
           google.charts.setOnLoadCallback(drawChart);
@@ -73,7 +76,8 @@
                 slices: {
                     0: {color:'red'},
                     1: {color:'blue'}
-                }
+                },
+                backgroundColor: {fill:'transparent'}
             };
 
             var newchart = new google.visualization.PieChart(document.getElementById('donut'));
@@ -116,7 +120,7 @@
                     <div classs="google-flight"></div>
                 </div>
                 <div class="col-md-6">
-                    <div id="myPieChart" style="width: 900px; height: 500px;"></div>
+                    <div id="myPieChart" style="width: 900px; height: 500px;background-color:transparent;"></div>
                 </div>
                 
             </div>

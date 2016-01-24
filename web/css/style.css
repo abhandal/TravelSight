@@ -30,3 +30,9 @@
     width: 50%;
 }
 
+.chart-analysis{
+    background-image: url(../images/chart_bg.jpg);
+    background-position: center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
