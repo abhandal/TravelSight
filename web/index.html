@@ -19,27 +19,32 @@
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/npm.js" type="text/javascript"></script>
         <script src="plugin/Scrollify-master/jquery.scrollify.min.js" type="text/javascript"></script>
-        <script src="js/functions.js" type="text/javascript"></script>
-
+        
         <script>
-                $(function() {
-                    $.scrollify({
-                        section : ".section-class-name",
-                    });
+            $(function() {
+                $.scrollify({
+                    section : ".section-class-name",
                 });
+            });
+            $(function() {
+                $( "#form-datepicker" ).datepicker();
+              });
         </script>
-
     </head>
     
     <body>
        <section class="section-class-name" id="main">
             <div class="top-nav">
-                <img src="images/Ts_logo_trans.gif" alt="logo">
+                <img src="images/white%20logo.png" alt="logo">
             </div>
-           <form class="form">
-                <input type="text" name="destination">
-               
-           </form>
+           <div class="form">
+               <form class="form-group">
+                    <input type="text" id="form-arrival" placeholder="From"> <br />
+                    <input type="text" id="form-destination" placeholder="To"> <br />
+                    <input type="text" id="form-datepicker" placeholder="Date">
+               </form>
+           </div>
+           
         </section>
         <section class="section-class-name"></section> 
     
