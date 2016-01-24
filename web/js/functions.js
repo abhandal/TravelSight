@@ -1,20 +1,24 @@
 $(document).ready(function() {
 
 	var flight_data_jfk = {};
-	var flight_data_lasvegas = {};
+	var flight_data_lax = {};
 
 	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data_jfk.json").then(function(response) {
 		console.log(response);
 		flight_data_jfk = response;
 	});
 
-	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data_lasvegas.json").then(function(response) {
+	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data_lax.json").then(function(response) {
 		console.log(response);
-		flight_data_lasvegas = response;
+		flight_data_lax = response;
 	
-	for (key in flight_data_lasvegas) {
+	var averageDelayForAirport;
 
-	delay(flight_data_lasvegas[key]);	
+	for (key in flight_data_lax) {
+
+	// console.log(flight_data_lax.lenght);
+
+	delay(flight_data_lax[key]);	
 	  //console.log(flight_data_lasvegas[key].carrier_name);
 	}
 	
@@ -24,7 +28,7 @@ $(document).ready(function() {
 
 function delay(airportDelay){
 	
-	console.log(airportDelay);
+	// console.log(airportDelay);
 
 	var divisor = airportDelay.arr_flights;
 	var arr_del15 = (airportDelay.arr_del15/divisor)*100;
