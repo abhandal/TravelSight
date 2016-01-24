@@ -15,5 +15,5 @@ George Valegaras
 Istaik 
 
 + Also Did The 
-#AppDirect Challenge: 
+# AppDirect Challenge: 
 https://conuhacks.appdirectondemand.com/teams/-K8k-gMojq3gIFwcZ-v4
