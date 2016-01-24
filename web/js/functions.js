@@ -10,7 +10,7 @@ $(document).ready(function() {
 	console.log(response);
 	var totalAirport = 0;
 
-	var test  = averageDelayAirport(flight_data_lax,'MIA');
+	var test  = averageDelayAirport(flight_data_lax,'ORD');
 	console.log("TEST VALUE: " + test);
 
 	function averageDelayAirport(airport,name){  
@@ -20,6 +20,7 @@ $(document).ready(function() {
 			if(airport[key].airport === name){
 				counter++;
 				totalAirport += delay(airport[key]);
+				console.log(totalAirport);
 			}
 		}
 	return totalAirport/counter;
@@ -31,6 +32,11 @@ $(document).ready(function() {
 
 function delay(airportDelay){
 	console.log(airportDelay);
+	
+	//bug with data set that will add null value so implment check to see if one value is null then return 0
+	if(airportDelay.arr_cancelled === null){
+		return 0;
+	}
 
 	var divisor = airportDelay.arr_flights;
 	var arr_del15 = (airportDelay.arr_del15/divisor)*100;
@@ -43,7 +49,9 @@ function delay(airportDelay){
 	var arr_diverted = (airportDelay.arr_diverted/divisor)*100;
 
 	var total_delay = arr_del15 + carrier_ct + weather_ct + nas_ct + security_ct + late_aircraft_ct + arr_cancelled + arr_diverted;
-	
+
+	console.log("The total is : " + total_delay);
+
 	return total_delay;
 }
 
