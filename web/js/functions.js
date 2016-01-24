@@ -14,7 +14,7 @@ $(document).ready(function() {
 	
 	for (key in flight_data_lasvegas) {
 
-		delay(flight_data_lasvegas[key]);	
+	delay(flight_data_lasvegas[key]);	
 	  //console.log(flight_data_lasvegas[key].carrier_name);
 	}
 	
@@ -23,7 +23,9 @@ $(document).ready(function() {
 });
 
 function delay(airportDelay){
+	
 	console.log(airportDelay);
+
 	var divisor = airportDelay.arr_flights;
 	var arr_del15 = (airportDelay.arr_del15/divisor)*100;
 	var carrier_ct = (airportDelay.carrier_ct/divisor)*100;
