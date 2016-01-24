@@ -11,29 +11,43 @@ $(document).ready(function() {
         {
             airport[i] = response[i].airport_name + " - " + response[i].airport;
         }
+    
     $.unique(airport);
+    
     $('#form-arrival').autocomplete({
         source:airport
     });
+    
     $('#form-destination').autocomplete({
         source:airport
     });
 
-	var totalAirport = 0;
+    var toValue ;
+    $('#form-destination').on('autocompletechange change', function () {
+        toValue = this.value;
+    }).change();
 
-	var test  = averageDelayAirport(flight_data_lax,'LAS');
-	console.log("TEST VALUE: " + test);
+	$('#form-submit').on('click',function( event ) {
+	
+	var fromValue = $('#form-arrival').val();
+	var toValue = $('#form-destination').val();
 
-	function averageDelayAirport(airport,name){  
+	var symbol = fromValue.substring((fromValue.length-3), fromValue.length);
+	averageDelayAirport(flight_data_lax,symbol);
+
+	});
+
+	function averageDelayAirport(airport,name){
+		var totalAirport = 0;  
 		var counter = 0;
 		for (key in airport) {
 			if(airport[key].airport === name){
 				counter++;
 				totalAirport += delay(airport[key]);
-				console.log(totalAirport);
 			}
 		}
-	return totalAirport/counter;
+		console.log(totalAirport/counter)
+		return totalAirport/counter;
 	}
 
 	});
@@ -41,8 +55,7 @@ $(document).ready(function() {
 });
 
 function delay(airportDelay){
-	console.log(airportDelay);
-	
+
 	//bug with data set that will add null value so implment check to see if one value is null then return 0
 	if(airportDelay.arr_cancelled === null){
 		return 0;
