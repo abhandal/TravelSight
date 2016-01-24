@@ -31,23 +31,29 @@ $(document).ready(function() {
 	
 	var fromValue = $('#form-arrival').val();
 	var toValue = $('#form-destination').val();
+	var date = $('#form-datepicker').val();
 
 	var symbol = fromValue.substring((fromValue.length-3), fromValue.length);
-	var chartPercent = averageDelayAirport(flight_data_lax,symbol);
+	
+	var objDate = new Date(date);
+    month = objDate.getMonth() + 1;
+
+	var chartPercent = averageDelayAirport(flight_data_lax,symbol,month);
     drawChart(chartPercent);
 
 	});
 
-	function averageDelayAirport(airport,name){
+	function averageDelayAirport(airport,name,month){
 		var totalAirport = 0;  
 		var counter = 0;
 		for (key in airport) {
 			if(airport[key].airport === name){
+				if((airport[key].month === month)){
 				counter++;
 				totalAirport += delay(airport[key]);
+				}
 			}
 		}
-		console.log(totalAirport/counter)
 		return totalAirport/counter;
 	}
 
