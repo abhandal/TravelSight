@@ -5,7 +5,7 @@ Transtat Collective API
 ## Description of our tool:
 This tool will anaylze historical flight data from major air lines to determine the possible trends in delay. 
 
-#Team Members:
+## Team Members:
 Pirasath Vallipuram
 
 Aman Bhandal
