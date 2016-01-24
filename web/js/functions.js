@@ -4,19 +4,29 @@ $(document).ready(function() {
 	var flight_data_lax = {};
 
 	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data.json").then(function(response) {
-		console.log(response);
-		flight_data_lax = response;
+	flight_data_lax = response;
 	
-	console.log(response);
+    var airport = [];
+    for(var i = 0; i<response.length;i++)
+        {
+            airport[i] = response[i].airport_name + " - " + response[i].airport;
+        }
+    $.unique(airport);
+    $('#form-arrival').autocomplete({
+        source:airport
+    });
+    $('#form-destination').autocomplete({
+        source:airport
+    });
+
 	var totalAirport = 0;
 
-	var test  = averageDelayAirport(flight_data_lax,'ORD');
+	var test  = averageDelayAirport(flight_data_lax,'LAS');
 	console.log("TEST VALUE: " + test);
 
 	function averageDelayAirport(airport,name){  
 		var counter = 0;
 		for (key in airport) {
-			 //console.log(airport.airport);
 			if(airport[key].airport === name){
 				counter++;
 				totalAirport += delay(airport[key]);
@@ -49,8 +59,6 @@ function delay(airportDelay){
 	var arr_diverted = (airportDelay.arr_diverted/divisor)*100;
 
 	var total_delay = arr_del15 + carrier_ct + weather_ct + nas_ct + security_ct + late_aircraft_ct + arr_cancelled + arr_diverted;
-
-	console.log("The total is : " + total_delay);
 
 	return total_delay;
 }
