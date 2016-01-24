@@ -25,6 +25,24 @@
                 $( "#form-datepicker" ).datepicker();
               });
         </script>
+        
+        <script>
+            $(document).ready(function(){
+                var airport = [];
+                $.getJSON("js/airports.json", function(data) {
+                    for(var i = 0; i<data.length;i++)
+                        {
+                            airport[i] = data[i].name + " - " + data[i].iata;
+                        }
+                    $('#form-arrival').autocomplete({
+                        source:airport
+                    });
+                    $('#form-destination').autocomplete({
+                        source:airport
+                    });
+                });
+            });
+        </script>
         <!-- Google Chart -->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
