@@ -3,26 +3,26 @@ $(document).ready(function() {
 	var flight_data_jfk = {};
 	var flight_data_lax = {};
 
-	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data_jfk.json").then(function(response) {
-		console.log(response);
-		flight_data_jfk = response;
-	});
-
-	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data_lax.json").then(function(response) {
+	$.getJSON("https://raw.githubusercontent.com/pirasathv/TravelSight/master/data/flight_data.json").then(function(response) {
 		console.log(response);
 		flight_data_lax = response;
 	
-	var totalAirport = 0 ;
+	console.log(response);
+	var totalAirport = 0;
 
-	var test  = averageDelayAirport(flight_data_lax);
-	console.log(test);
+	var test  = averageDelayAirport(flight_data_lax,'MIA');
+	console.log("TEST VALUE: " + test);
 
-	function averageDelayAirport(airport){  
-	var averageDelayForAirport ;
+	function averageDelayAirport(airport,name){  
+		var counter = 0;
 		for (key in airport) {
-		totalAirport += delay(airport[key]);
+			 //console.log(airport.airport);
+			if(airport[key].airport === name){
+				counter++;
+				totalAirport += delay(airport[key]);
+			}
 		}
-	return totalAirport/airport.length;
+	return totalAirport/counter;
 	}
 
 	});
@@ -30,7 +30,8 @@ $(document).ready(function() {
 });
 
 function delay(airportDelay){
-	
+	console.log(airportDelay);
+
 	var divisor = airportDelay.arr_flights;
 	var arr_del15 = (airportDelay.arr_del15/divisor)*100;
 	var carrier_ct = (airportDelay.carrier_ct/divisor)*100;
