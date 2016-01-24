@@ -50,7 +50,12 @@
                 ['Diverted', 0.01]
               ]);
                 var options = {
-                    backgroundColor: {fill:'transparent'}
+                    backgroundColor: {fill:'transparent'},
+                    pieSliceTextStyle: {
+                color: 'white',
+              },
+                    legend: {textStyle: {color: 'white'}},
+                    pieSliceBorderColor: 'transparent',
                 }
                 
               // Instantiate and draw the chart.
@@ -77,7 +82,8 @@
                     0: {color:'red'},
                     1: {color:'blue'}
                 },
-                backgroundColor: {fill:'transparent'}
+                backgroundColor: {fill:'transparent'},
+                pieSliceBorderColor: 'transparent',
             };
 
             var newchart = new google.visualization.PieChart(document.getElementById('donut'));
