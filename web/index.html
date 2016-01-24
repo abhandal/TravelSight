@@ -107,7 +107,7 @@
     <body>
             <section class="section-class-name" id="main">
             <div class="top-nav">
-                <img src="images/white%20logo.png" alt="logo">
+                <img src="images/LOGO.png" alt="logo">
             </div>
            <div class="form">
                <form class="form-group">
@@ -119,9 +119,15 @@
            </div>
            
         </section>
+        
         <section class="section-class-name chart-analysis">
             <div class="row">
-                
+                <div id="output-plan"></div>
+                <script>
+                    var arrival = $('#form-arrival').val();
+                    var depart = $('#form-destination').val();
+                    $('#output-plan').append(''+arrival+' --> '+depart+'');
+                </script>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -133,6 +139,7 @@
                     </div>
                     
                 </div>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="social-feed">

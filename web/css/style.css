@@ -1,10 +1,17 @@
+html{
+    position: relative;
+}
 
+body{
+    position: absolute;
+    width: 100%;
+    overflow: hidden !important;
+}
 #main{
     background-image: url(../images/main_wp.jpg);
     background-position: center center;
     background-size:cover;
     background-repeat: no-repeat;
-    
 }
 
 .form{
