@@ -1,5 +1,7 @@
+
 #main{
     background-image: url(../images/main_wp.jpg);
+    background-position: center center;
     background-size:cover;
     background-repeat: no-repeat;
     
